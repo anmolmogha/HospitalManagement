@@ -5,9 +5,7 @@ const config = require('./config/appConfig');
 
 const PORT = config.port || 3000;
 
-// Ensure app is defined and has a listen method
-
-if (app && app.listen) {  
+if (app && app.listen) {  // Ensure app is defined and has a listen method
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
