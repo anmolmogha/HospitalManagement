@@ -3,7 +3,6 @@ const config = require('./appConfig');
 
 mongoose.connect(config.dbUri, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
 });
 
 const db = mongoose.connection;
