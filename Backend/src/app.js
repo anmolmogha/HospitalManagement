@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const doctorRoute = require('./routes/doctorRoute');
+const patientRoute = require('./routes/patientRoute');
+const db = require('./config/db');
 
 const app = express();
 
@@ -12,6 +14,8 @@ app.use('/api/doctor', doctorRoute);
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+
+app.use('/api/patient', patientRoute);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
