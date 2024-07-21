@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const config = require('./appConfig');
 
 mongoose.connect(config.dbUri, {
+
 });
 
 const db = mongoose.connection;
