@@ -13,3 +13,35 @@ exports.getAllDoctors = async (req, res) => {
 };
 
 // Additional controller functions for user operations
+
+exports.addDoctor = async (req, res)=>{
+  try{
+    const {
+      name,
+      email,
+      phoneNumber,
+      dob,
+      gender,
+      qualification,
+      specialization
+    } = req.body;
+
+    const newDoctor = new Doctor({
+      name,
+      email,
+      phoneNumber,
+      dob,
+      gender,
+      qualification,
+      specialization
+    })
+
+    // console.log(first)
+    await newDoctor.save();
+    res.status(200).send('Doctor registered successfully')
+
+  }catch(err){
+    console.error(err);
+    res.status(500).send('Error Registering Doctor');
+  }
+}

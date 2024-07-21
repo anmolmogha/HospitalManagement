@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const config = require('./appConfig');
 
 mongoose.connect(config.dbUri, {
-  useNewUrlParser: true,
 });
 
 const db = mongoose.connection;
