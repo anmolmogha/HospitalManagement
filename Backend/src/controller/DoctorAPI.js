@@ -1,5 +1,6 @@
 const Doctor = require('../model/Doctor');
 const DoctorService = require('../service/DoctorService');
+const logger = require('../utils/logger');
 
 exports.getAllDoctors = async (req, res) => {
   try {
@@ -13,3 +14,36 @@ exports.getAllDoctors = async (req, res) => {
 };
 
 // Additional controller functions for user operations
+
+exports.addDoctor = async (req, res)=>{
+  try{
+    const {
+      name,
+      email,
+      phoneNumber,
+      dob,
+      gender,
+      qualification,
+      specialization,
+    } = req.body;
+
+    const newDoctor = new Doctor({
+      name,
+      email,
+      phoneNumber,
+      dob,
+      gender,
+      qualification,
+      specialization,
+    })
+
+    // console.log(first)
+    await newDoctor.save();
+    res.status(200).send('Doctor registered successfully')
+    logger.info(name+' registered as a Doctor successfully')
+
+  }catch(err){
+    logger.info(err.getMessage)
+    res.status(500).send('Error Registering Doctor');
+  }
+}

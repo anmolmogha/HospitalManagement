@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/patient', patientRoute);
+app.use("api/doctor", doctorRoute);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
