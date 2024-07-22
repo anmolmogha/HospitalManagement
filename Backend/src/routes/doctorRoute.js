@@ -6,6 +6,6 @@ const router = express.Router();
 router.get('/', DoctorController.getAllDoctors);
 // Additional routes for user operations
 
-router.post('/registerDoctor', DoctorController.addDoctor)
+router.post('/register', DoctorController.addDoctor)
 
 module.exports = router;
