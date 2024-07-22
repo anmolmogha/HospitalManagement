@@ -36,6 +36,7 @@ exports.addDoctor = async (req, res)=>{
       qualification,
       specialization,
     })
+    console.log(newDoctor)
 
     // console.log(first)
     await newDoctor.save();

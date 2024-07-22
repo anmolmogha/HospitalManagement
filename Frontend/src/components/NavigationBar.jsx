@@ -3,13 +3,16 @@ import { NavLink } from "react-router-dom";
 
 function NavigationBar() {
   return (
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
+    <nav
+      className="navbar navbar-expand-lg bg-body-tertiary"
+      style={{ boxShadow: "1px 1px 1px 1px #e5e5e5" }}
+    >
+      <div className="container-fluid">
         <NavLink className="navbar-brand" to={"/"}>
           Hospital Management
         </NavLink>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -17,16 +20,16 @@ function NavigationBar() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
               <NavLink className="nav-link" to={"/doctorRegisteration"}>
                 Doctor Registeration
               </NavLink>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <NavLink className="nav-link" to={"/patientRegisteration"}>
                 Patient Registeration
               </NavLink>

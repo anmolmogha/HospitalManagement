@@ -3,6 +3,7 @@ import PatientRegisteration from "./pages/PatientRegisteration";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar";
 import DoctorRegisteration from "./pages/DoctorRegisteration";
+import "./App.css";
 
 const App = () => {
   return (
