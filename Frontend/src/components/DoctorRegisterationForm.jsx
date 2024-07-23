@@ -26,11 +26,15 @@ function DoctorRegisterationForm() {
     doctorDOB: "",
     doctorGender: "male",
     doctorQualification: "graduate",
-    doctorSpecialization: "",
+    doctorSpecialization: specialization[0],
   });
-
   const [specialized, setSpecialized] = useState(false);
 
+  /**
+   * This function is invoked whenever a change happens in the form
+   * This function upddates the state variable
+   * @param {*} e
+   */
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -43,9 +47,15 @@ function DoctorRegisterationForm() {
     }
   };
 
+  const validate = () => {};
+
+  /**
+   * This function handle the submit button it is triggered when the form is submitted
+   * This function call a axios method which pushes the form data to the backend
+   * @param {*} e
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formFields);
     registerDoctor(formFields);
   };
 
@@ -65,6 +75,7 @@ function DoctorRegisterationForm() {
               Full Name
             </label>
             <input
+              required
               name="doctorName"
               type="text"
               id="fullName"
@@ -82,6 +93,7 @@ function DoctorRegisterationForm() {
               Email
             </label>
             <input
+              required
               name="doctorEmail"
               type="email"
               id="email"
@@ -99,6 +111,7 @@ function DoctorRegisterationForm() {
               Mobile Number
             </label>
             <input
+              required
               name="doctorMobile"
               type="number"
               id="mobileNumber"
@@ -113,6 +126,7 @@ function DoctorRegisterationForm() {
               Date of Birth
             </label>
             <input
+              required
               name="doctorDOB"
               type="date"
               id="dob"
@@ -180,6 +194,7 @@ function DoctorRegisterationForm() {
               Qualification
             </label>
             <select
+              required
               className="form-select"
               name="doctorQualification"
               onChange={handleChange}
