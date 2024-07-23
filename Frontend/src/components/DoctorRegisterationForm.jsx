@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 import "../CSS/registerationFormDoctor.css";
 import { registerDoctor } from "../services/api";
 
@@ -32,7 +34,7 @@ function DoctorRegisterationForm() {
 
   /**
    * This function is invoked whenever a change happens in the form
-   * This function upddates the state variable
+   * This function updates the state variable
    * @param {*} e
    */
   const handleChange = (e) => {
@@ -46,6 +48,10 @@ function DoctorRegisterationForm() {
       setSpecialized(false);
     }
   };
+
+  const handlePhoneChange = (val) => {
+    setFormFields({ ...formFields, doctorMobile: val });
+}
 
   const validate = () => {};
 
@@ -110,15 +116,16 @@ function DoctorRegisterationForm() {
             <label htmlFor="mobileNumber" className="form-label">
               Mobile Number
             </label>
-            <input
-              required
-              name="doctorMobile"
-              type="number"
-              id="mobileNumber"
-              className="form-control"
-              placeholder="Mobile Number"
+            <PhoneInput
+              country={'us'}
               value={formFields.doctorMobile}
-              onChange={handleChange}
+              onChange={handlePhoneChange}
+              enableSearch={true}
+              inputProps={{
+                name: 'doctorMobile',
+                required: true,
+                className: 'form-control'
+              }}
             />
           </div>
           <div className="col">
