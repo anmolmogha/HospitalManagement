@@ -18,29 +18,28 @@ exports.getAllDoctors = async (req, res) => {
 exports.addDoctor = async (req, res)=>{
   try{
     const {
-      name,
-      email,
-      phoneNumber,
-      dob,
-      gender,
-      qualification,
-      specialization,
+      doctorName,
+      doctorEmail,
+      doctorMobile,
+      doctorDOB,
+      doctorGender,
+      doctorQualification,
+      doctorSpecialization,
     } = req.body;
 
     const newDoctor = new Doctor({
-      name,
-      email,
-      phoneNumber,
-      dob,
-      gender,
-      qualification,
-      specialization,
+      name :doctorName,
+      email:doctorEmail,
+      phoneNumber: doctorMobile,
+      dob :doctorDOB,
+      gender :doctorGender,
+      qualification: doctorQualification,
+      specialization: doctorSpecialization,
     })
 
-    // console.log(first)
     await newDoctor.save();
     res.status(200).send('Doctor registered successfully')
-    logger.info(name+' registered as a Doctor successfully')
+    logger.info(doctorName+' registered as a Doctor successfully')
 
   }catch(err){
     logger.info(err.getMessage)
