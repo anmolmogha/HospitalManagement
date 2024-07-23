@@ -30,6 +30,10 @@ const patientSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    occupation: {
+        type: String,
+        required: true,
+    },
     address: {
         type: String,
         required: true,
@@ -39,8 +43,16 @@ const patientSchema = new mongoose.Schema({
     },
     emergencyContact: {
         type: String,
+    },
+    IDtype: {
+        type: String,
+        required: true,
+    },
+    IDnumber: {
+        type: String,
+        required: true,
+        unique: true
     }
-
 })
 
 const Patient = mongoose.model('Patient', patientSchema);

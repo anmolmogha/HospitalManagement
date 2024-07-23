@@ -28,9 +28,9 @@ exports.getAllPatients = async (req, res) => {
 
 exports.addPatients = async (req, res) => {
     try {
-        const { name, email, phoneNumber, dob, gender, address, emergencyContactName, emergencyContact } = req.body;
+        const { name, email, phoneNumber, dob, gender, occupation, address, emergencyContactName, emergencyContact } = req.body;
     
-    if (!name || !email || !phoneNumber || !dob || !gender || !address) {
+    if (!name || !email || !phoneNumber || !dob || !gender || !address || !occupation) {
         return res.status(400).send('Missing required fields');
     }
 
@@ -47,6 +47,7 @@ exports.addPatients = async (req, res) => {
         phoneNumber: normalizedPhoneNumber,
         dob: new Date(dob),
         gender,
+        occupation,
         address,
         emergencyContactName,
         emergencyContact: normalizedEmergencyContact
