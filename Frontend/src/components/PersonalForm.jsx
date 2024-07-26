@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 
-function PersonalForm({ setFormFields, formFields, specialization }) {
+function PersonalForm({ setFormFields, formFields, specializations }) {
   const [specialized, setSpecialized] = useState(false);
 
   /**
@@ -10,20 +10,15 @@ function PersonalForm({ setFormFields, formFields, specialization }) {
    * @param {*} e
    */
   const handleChange = (e) => {
-    console.log(e);
     const { name, value } = e.target;
 
     setFormFields({ ...formFields, [name]: value });
 
-    if (name === "doctorQualification" && value !== "graduate") {
+    if (name === "qualification" && value !== "graduate") {
       setSpecialized(true);
-    } else if (name === "doctorQualification" && value === "graduate") {
+    } else if (name === "qualification" && value === "graduate") {
       setSpecialized(false);
     }
-  };
-
-  const handlePhoneChange = (val) => {
-    setFormFields({ ...formFields, doctorMobile: val });
   };
 
   return (
@@ -36,12 +31,12 @@ function PersonalForm({ setFormFields, formFields, specialization }) {
           </label>
           <input
             required
-            name="doctorName"
+            name="name"
             type="text"
             id="fullName"
             className="form-control"
             placeholder="Name"
-            value={formFields.doctorName}
+            value={formFields.name}
             onChange={handleChange}
           />
         </div>
@@ -54,12 +49,12 @@ function PersonalForm({ setFormFields, formFields, specialization }) {
           </label>
           <input
             required
-            name="doctorDOB"
+            name="dob"
             type="date"
             id="dob"
             className="form-control"
             placeholder="Date of Birth"
-            value={formFields.doctorDOB}
+            value={formFields.dob}
             onChange={handleChange}
           />
         </div>
@@ -75,11 +70,11 @@ function PersonalForm({ setFormFields, formFields, specialization }) {
               <div id="gender" className="row">
                 <div className="form-check col">
                   <input
-                    checked={formFields.doctorGender === "male"}
+                    checked={formFields.gender === "male"}
                     type="radio"
                     id="male"
                     className="form-check-input"
-                    name="doctorGender"
+                    name="gender"
                     value={"male"}
                     onChange={handleChange}
                   />
@@ -89,11 +84,11 @@ function PersonalForm({ setFormFields, formFields, specialization }) {
                 </div>
                 <div className="form-check col">
                   <input
-                    checked={formFields.doctorGender === "female"}
+                    checked={formFields.gender === "female"}
                     type="radio"
                     id="female"
                     className="form-check-input"
-                    name="doctorGender"
+                    name="gender"
                     value={"female"}
                     onChange={handleChange}
                   />
@@ -103,11 +98,11 @@ function PersonalForm({ setFormFields, formFields, specialization }) {
                 </div>
                 <div className="form-check col">
                   <input
-                    checked={formFields.doctorGender === "others"}
+                    checked={formFields.gender === "others"}
                     type="radio"
                     id="others"
                     className="form-check-input"
-                    name="doctorGender"
+                    name="gender"
                     value={"others"}
                     onChange={handleChange}
                   />
@@ -128,7 +123,7 @@ function PersonalForm({ setFormFields, formFields, specialization }) {
           <select
             required
             className="form-select"
-            name="doctorQualification"
+            name="qualification"
             onChange={handleChange}
           >
             <option value={"graduate"}>Graduate</option>
@@ -142,11 +137,11 @@ function PersonalForm({ setFormFields, formFields, specialization }) {
           </label>
           <select
             className="form-select"
-            name="doctorSpecialization"
+            name="specialization"
             disabled={!specialized}
             onChange={handleChange}
           >
-            {specialization.map((speciality) => (
+            {specializations.map((speciality) => (
               <option key={speciality} value={speciality}>
                 {speciality}
               </option>
