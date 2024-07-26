@@ -35,12 +35,12 @@ function ContactInfoForm({ formFields, setFormFields }) {
           </label>
           <input
             required
-            name="doctorEmail"
+            name="email"
             type="email"
             id="email"
             className="form-control"
             placeholder="Email"
-            value={formFields.doctorEmail}
+            value={formFields.email}
             onChange={handleChange}
           />
         </div>

@@ -7,7 +7,7 @@ import PersonalForm from "../components/PersonalForm";
 import ContactInfoForm from "../components/ContactInfoForm";
 
 function DoctorRegisteration() {
-  const specialization = [
+  const specializations = [
     "Orthopedics",
     "Internal Medicine",
     "Obstetrics and Gynecology",
@@ -24,13 +24,11 @@ function DoctorRegisteration() {
   ];
 
   const [personalFormFields, setPersonalFormFields] = useState({
-    doctorName: "",
-    doctorEmail: "",
-    doctorMobile: "",
-    doctorDOB: "",
-    doctorGender: "male",
-    doctorQualification: "graduate",
-    doctorSpecialization: specialization[0],
+    name: "",
+    dob: "",
+    gender: "male",
+    qualification: "graduate",
+    specialization: specializations[0],
   });
 
   const [addressFields, setAddressFields] = useState({
@@ -45,8 +43,8 @@ function DoctorRegisteration() {
 
   const [contactInfo, setContactInfo] = useState({
     email: "",
-    phoneNumber: "",
-    alernativePhoneNumber: "",
+    mobileNumber: "",
+    alernativeMobileNumber: "",
   });
 
   /**
@@ -56,7 +54,12 @@ function DoctorRegisteration() {
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    registerDoctor(formFields);
+    setPersonalFormFields({
+      ...personalFormFields,
+      address: addressFields,
+      contactInfo: contactInfo,
+    });
+    registerDoctor(personalFormFields);
   };
 
   return (
@@ -73,7 +76,7 @@ function DoctorRegisteration() {
         <PersonalForm
           formFields={personalFormFields}
           setFormFields={setPersonalFormFields}
-          specialization={specialization}
+          specializations={specializations}
         />
         <ContactInfoForm
           setFormFields={setContactInfo}
