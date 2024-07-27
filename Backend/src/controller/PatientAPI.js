@@ -1,5 +1,5 @@
 const { parsePhoneNumberFromString } = require('libphonenumber-js')
-const Patient = require('../model/Patient')
+const Patient = require('../model/Patient');
 
 function normalizePhoneNumber(phoneNumber) {
     // Clean non-numeric characters
@@ -26,11 +26,11 @@ exports.getAllPatients = async (req, res) => {
       }
 }
 
-exports.addPatients = async (req, res) => {
+exports.registerPatients = async (req, res) => {
     try {
-        const { name, email, phoneNumber, dob, gender, occupation, address, emergencyContactName, emergencyContact } = req.body;
+        const { name, email, phoneNumber, dob, gender, occupation, address, emergencyContactName, emergencyContact, identificationNumber, identificationType } = req.body;
     
-    if (!name || !email || !phoneNumber || !dob || !gender || !address || !occupation) {
+    if (!name || !email || !phoneNumber || !dob || !gender || !address || !occupation || !identificationType) {
         return res.status(400).send('Missing required fields');
     }
 
@@ -50,7 +50,9 @@ exports.addPatients = async (req, res) => {
         occupation,
         address,
         emergencyContactName,
-        emergencyContact: normalizedEmergencyContact
+        emergencyContact: normalizedEmergencyContact,
+        IDtype: identificationNumber,
+        IDnumber: identificationType
     });
 
     console.log(newPatient);
