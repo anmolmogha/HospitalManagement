@@ -98,6 +98,8 @@ function DoctorRegisteration() {
     }
   }, [isSubmitted, formData]);
 
+  const getAllDoctors = () => {};
+
   return (
     <div
       className="container bg-body-tertiary"
@@ -133,6 +135,9 @@ function DoctorRegisteration() {
           </div>
         </div>
       </form>
+      <button type="submit" onClick={getAllDoctors}>
+        Get All Doctors in Console
+      </button>
     </div>
   );
 }

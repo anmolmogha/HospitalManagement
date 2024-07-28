@@ -4,8 +4,9 @@ const logger = require("../utils/logger");
 
 exports.getAllDoctors = async (req, res) => {
   try {
-    console.log("Doctor Running");
-    res.status(200).send("Doctor Running");
+    const doctors = DoctorService.getAllDoctors();
+    console.log(doctors);
+    res.status(200).send(doctors);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
