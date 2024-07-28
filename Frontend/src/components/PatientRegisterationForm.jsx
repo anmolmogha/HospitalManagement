@@ -2,32 +2,41 @@ import React, {useState} from 'react'
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { registerPatient } from '../services/api';
+import { useLocation } from 'react-router-dom';
 
 const PatientRegisterationForm = () => {
-    const identificationType = [
+  const location = useLocation()
+  const prefilledData = location.state || {}
+
+    const identificationTypes = [
         "Aadhar Card",
         "Driving License",
         "Passport",
         "VoterID Card",
         "PAN Card",
     ]
-    const [formFields, setFormFields] = useState({
-        name: "",
-        email: "",
-        phoneNumber: "",
-        dob: "",
-        gender: "male",
-        occupation: "",
-        address: "",
-        emergencyContactName: "",
-        emergencyContact: "",
-        identificationType: identificationType[0],
-        identificationNumber: ""
-    });
+
+    const initialFormFields = {
+      name: prefilledData.name || "",
+      email: prefilledData.email || "",
+      phoneNumber: prefilledData.phoneNumber || "",
+      dob: "",
+      gender: "male",
+      occupation: "",
+      address: "",
+      emergencyContactName: "",
+      emergencyContact: "",
+      identificationType: identificationTypes[0],
+      identificationNumber: ""
+    };
+
+    const [formFields, setFormFields] = useState(initialFormFields);
 
     const [errors, setErrors] = useState({
         identificationNumber: '',
       });
+
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -80,7 +89,9 @@ const PatientRegisterationForm = () => {
             alert('Identification pending');
             return;
         }
+        console.log(formFields);
         registerPatient(formFields)
+        setFormFields(initialFormFields)
     }
   return (
     <div
@@ -290,7 +301,7 @@ const PatientRegisterationForm = () => {
                 value={formFields.identificationType}
                 onChange={handleChange}
                 >
-                    {identificationType.map((id) => (
+                    {identificationTypes.map((id) => (
                         <option key={id} value={id}>
                             {id}
                         </option>
