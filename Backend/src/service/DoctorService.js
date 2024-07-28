@@ -28,8 +28,6 @@ exports.addNewDoctor = async (doctorDTO) => {
       gender: doctorDTO.gender,
       qualification: doctorDTO.qualification,
       specialization: doctorDTO.specialization,
-      // address: doctorDTO.address,
-      // contactInfo: doctorDTO.contactInfo,
       address: responseAddress._id,
       contactInfo: responseContactInfo._id,
     });

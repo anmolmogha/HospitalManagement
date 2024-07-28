@@ -3,27 +3,20 @@ import React, { useEffect } from "react";
 import { getInfoFromPin } from "../services/api";
 
 function AddressForm({ formFields, setFormFields }) {
-  // Need to check for alternatives for this code
-  useEffect(() => {
-    console.log(formFields);
-  }, [formFields]);
-
   /**
-   * This method is used for setting the different fields in the address form when the pincode is entered
+   * This method is used for setting the different fields in the address form when
+   * the pincode is entered
    */
   const handlePinCode = () => {
     getInfoFromPin(formFields.pincode)
       .then((res) => {
-        console.log(res.data);
         const { city, state, suburb } = res.data.results[0].components;
-        console.log(city + " " + state);
         setFormFields({
           ...formFields,
           city,
           state,
           district: suburb,
         });
-        return res.data;
       })
       .catch((err) => {
         console.log(err);
