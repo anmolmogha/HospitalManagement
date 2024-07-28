@@ -39,8 +39,11 @@ async function deleteContactInfo(id) {
   }
 }
 
-exports.getAllDoctors = async () => {
-  return await Doctor.find();
+exports.getAllDoctors = () => {
+  return Doctor.find().then((res) => {
+    // console.log(res);
+    return res;
+  });
 };
 
 /**

@@ -8,8 +8,8 @@ export const registerDoctor = async (formData) => {
   );
 };
 
-export const getAllDoctors = async () => {
-  return await axios.get("http://localhost:8080/api/doctor/");
+export const getAllDoctors = () => {
+  return axios.get("http://localhost:8080/api/doctor/");
 };
 
 export const registerPatient = async (formData) => {
