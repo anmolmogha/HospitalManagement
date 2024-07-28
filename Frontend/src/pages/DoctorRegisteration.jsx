@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "react-phone-input-2/lib/style.css";
-import { registerDoctor } from "../services/api";
+import { getAllDoctors, registerDoctor } from "../services/api";
 import AddressForm from "../components/AddressForm";
 import PersonalForm from "../components/PersonalForm";
 import ContactInfoForm from "../components/ContactInfoForm";
@@ -98,6 +98,12 @@ function DoctorRegisteration() {
     }
   }, [isSubmitted, formData]);
 
+  const getDoctors = () => {
+    getAllDoctors().then((res) => {
+      console.log(res.data);
+    });
+  };
+
   return (
     <div
       className="container bg-body-tertiary"
@@ -133,6 +139,9 @@ function DoctorRegisteration() {
           </div>
         </div>
       </form>
+      <button type="submit" onClick={getDoctors}>
+        Get All Doctors in Console
+      </button>
     </div>
   );
 }
