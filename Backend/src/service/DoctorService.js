@@ -10,14 +10,13 @@ exports.getAllDoctors = async () => {
 };
 
 exports.addNewDoctor = async (doctorDTO) => {
+  const addressDTO = new AddressDTO(doctorDTO.address);
+  addressDTO.validate();
+  const address = new Address(addressDTO);
+  const contactInfoDTO = new ContactInfoDTO(doctorDTO.contactInfo);
+  contactInfoDTO.validate();
+  const contactInfo = new ContactInfo(contactInfoDTO);
   try {
-    const addressDTO = new AddressDTO(doctorDTO.address);
-    addressDTO.validate();
-    const address = new Address(addressDTO);
-    const contactInfoDTO = new ContactInfoDTO(doctorDTO.contactInfo);
-    contactInfoDTO.validate();
-    const contactInfo = new ContactInfo(contactInfoDTO);
-
     const responseAddress = await address.save();
     const responseContactInfo = await contactInfo.save();
 
@@ -35,7 +34,6 @@ exports.addNewDoctor = async (doctorDTO) => {
     await newDoctor.save();
     return "Doctor Added Successfully";
   } catch (err) {
-    console.log(err);
     logger.info(err);
   }
 };
