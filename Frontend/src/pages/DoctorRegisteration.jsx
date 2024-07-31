@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import PhoneInput from "react-phone-input-2";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "react-phone-input-2/lib/style.css";
-import { registerDoctor } from "../services/api";
+import { getAllDoctors, registerDoctor } from "../services/api";
 import AddressForm from "../components/AddressForm";
 import PersonalForm from "../components/PersonalForm";
 import ContactInfoForm from "../components/ContactInfoForm";
@@ -23,6 +23,14 @@ function DoctorRegisteration() {
     "ENT",
   ];
 
+  const navigate = useNavigate();
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({});
+
+  /**
+   * State variable to hold the personal info of the doctor
+   */
   const [personalFormFields, setPersonalFormFields] = useState({
     name: "",
     dob: "",
@@ -31,6 +39,9 @@ function DoctorRegisteration() {
     specialization: specializations[0],
   });
 
+  /**
+   * State variable to hold the address info of the doctor
+   */
   const [addressFields, setAddressFields] = useState({
     country: "",
     pincode: "",
@@ -41,6 +52,9 @@ function DoctorRegisteration() {
     district: "",
   });
 
+  /**
+   * State variable to hold the contact info state
+   */
   const [contactInfo, setContactInfo] = useState({
     email: "",
     mobileNumber: "",
@@ -54,12 +68,40 @@ function DoctorRegisteration() {
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    setPersonalFormFields({
+    setFormData({
       ...personalFormFields,
       address: addressFields,
       contactInfo: contactInfo,
     });
-    registerDoctor(personalFormFields);
+    setIsSubmitted(true);
+  };
+
+  /**
+   * This useEffect is triggered two time first at the time when the page loads
+   * Second when the form is submitted
+   * Its function is the make an api call the the submit button is clicked
+   * This is seperate from the handleSubmit because in handle submit the state is not updated right away
+   */
+  useEffect(() => {
+    if (isSubmitted) {
+      registerDoctor(formData)
+        .then((res) => {
+          console.log(res.data);
+          navigate("/login");
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          setIsSubmitted(false);
+        });
+    }
+  }, [isSubmitted, formData]);
+
+  const getDoctors = () => {
+    getAllDoctors().then((res) => {
+      console.log(res.data);
+    });
   };
 
   return (
@@ -97,6 +139,9 @@ function DoctorRegisteration() {
           </div>
         </div>
       </form>
+      <button type="submit" onClick={getDoctors}>
+        Get All Doctors in Console
+      </button>
     </div>
   );
 }

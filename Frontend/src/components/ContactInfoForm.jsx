@@ -4,7 +4,6 @@ import PhoneInput from "react-phone-input-2";
 function ContactInfoForm({ formFields, setFormFields }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setFormFields({ ...formFields, [name]: value });
   };
 
