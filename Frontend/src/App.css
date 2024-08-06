@@ -1,3 +1,12 @@
 body{
     background: radial-gradient(circle, rgba(174,174,238,0.15592174369747902) 0%, rgba(148,222,233,0.455641631652661) 100%);
 }
+
+.nav-bar-doctor{
+    borderRadius: "2rem";
+        marginLeft: "1.2rem";
+        marginTop: "1.5rem";
+        padding: "2rem 2rem";
+        maxWidth: "18rem";
+        maxHeight: "95vh";
+}
