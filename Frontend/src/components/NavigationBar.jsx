@@ -39,6 +39,11 @@ function NavigationBar() {
                 Login
               </NavLink>
             </li>
+            <li>
+              <NavLink className="nav-link" to={"/doctorPanel"}>
+                Doctor Panel
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>

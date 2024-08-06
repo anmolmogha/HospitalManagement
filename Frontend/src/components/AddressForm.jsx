@@ -1,5 +1,3 @@
-import axios from "axios";
-import React, { useEffect } from "react";
 import { getInfoFromPin } from "../services/api";
 
 function AddressForm({ formFields, setFormFields }) {

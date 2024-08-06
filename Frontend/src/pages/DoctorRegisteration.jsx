@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "react-phone-input-2/lib/style.css";
-import { getAllDoctors, registerDoctor } from "../services/api";
+import { registerDoctor } from "../services/api";
 import AddressForm from "../components/AddressForm";
 import PersonalForm from "../components/PersonalForm";
 import ContactInfoForm from "../components/ContactInfoForm";
@@ -96,13 +96,13 @@ function DoctorRegisteration() {
           setIsSubmitted(false);
         });
     }
-  }, [isSubmitted, formData]);
+  }, [isSubmitted, formData, navigate]);
 
-  const getDoctors = () => {
-    getAllDoctors().then((res) => {
-      console.log(res.data);
-    });
-  };
+  // const getDoctors = () => {
+  //   getAllDoctors().then((res) => {
+  //     console.log(res.data);
+  //   });
+  // };
 
   return (
     <div
@@ -139,9 +139,6 @@ function DoctorRegisteration() {
           </div>
         </div>
       </form>
-      <button type="submit" onClick={getDoctors}>
-        Get All Doctors in Console
-      </button>
     </div>
   );
 }
