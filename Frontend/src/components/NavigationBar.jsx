@@ -1,11 +1,10 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 
 function NavigationBar() {
   return (
     <nav
       className="navbar navbar-expand-lg bg-body-tertiary"
-      style={{ boxShadow: "1px 1px 1px 1px #e5e5e5" }}
+      style={{ boxShadow: "2px 2px 10px  #023047" }}
     >
       <div className="container-fluid">
         <NavLink className="navbar-brand" to={"/"}>

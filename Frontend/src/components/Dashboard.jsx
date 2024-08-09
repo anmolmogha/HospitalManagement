@@ -46,14 +46,15 @@ function Dashboard() {
 
   return (
     <div
-      className="col bg-body-tertiary"
+      className="col "
       style={{
+        backgroundColor: "white",
         height: "85vh",
         // width: "rem",
         marginLeft: "3rem",
         marginRight: "1rem",
         marginTop: "2rem",
-        boxShadow: "1px 1px 1px  #8ecae6",
+        boxShadow: "2px 2px 10px  #023047",
         borderRadius: "0.5rem",
       }}
     >
@@ -61,12 +62,12 @@ function Dashboard() {
         className="container"
         style={{
           backgroundColor: "white",
-          height: "45vh",
-          width: "40rem",
+          height: "40vh",
+          width: "35rem",
           marginLeft: "1rem",
           //   marginRight: "2rem",
           marginTop: "2rem",
-          boxShadow: "1px 1px 1px  #8ecae6",
+          boxShadow: "2px 2px 10px  #023047",
           borderRadius: "0.5rem",
         }}
       >
@@ -79,6 +80,7 @@ function Dashboard() {
         <Analytics dataset={dataset} labels={labels} />
       </div>
       <div>
+        {/* <h3>Appointments</h3> */}
         <Appointments />
       </div>
     </div>
