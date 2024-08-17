@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function Appointments() {
   const scrollContainerRef = useRef(null);
+  const navigate = useNavigate();
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -103,7 +105,11 @@ function Appointments() {
         {cardsData.map((card, index) => (
           <div
             className="card mb-3"
+            onClick={() => {
+              navigate("/patientdashboardfordoctor");
+            }}
             style={{
+              cursor: "pointer",
               margin: "1rem ",
               maxWidth: "540px",
               width: "400px",
