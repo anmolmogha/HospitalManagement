@@ -6,6 +6,8 @@ import "./App.css";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Doctor from "./pages/Doctor";
+import TaskManagement from "./pages/TaskManagement";
+import PatientDashboardForDoctor from "./pages/PatientDashboardForDoctor";
 
 const App = () => {
   return (
@@ -21,6 +23,11 @@ const App = () => {
         <Route path="/doctorRegisteration" element={<DoctorRegisteration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/doctorPanel" element={<Doctor />} />
+        <Route path="/taskmanagement" element={<TaskManagement />} />
+        <Route
+          path="/patientdashboardfordoctor"
+          element={<PatientDashboardForDoctor />}
+        />
       </Routes>
     </Router>
   );

@@ -1,11 +1,15 @@
 import { MdAccountCircle } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 function DoctorNavBar() {
+  const navigate = useNavigate();
+
   return (
     <div
-      className="col bg-body-tertiary"
+      className="col"
       style={{
-        // backgroundColor: "powderblue",
+        backgroundColor: "#001d3d",
+        color: "#e0e1dd",
         height: "85vh",
         // width: "65rem",
         marginLeft: "2rem",
@@ -13,7 +17,7 @@ function DoctorNavBar() {
         maxWidth: "18rem",
         maxHeight: "95vh",
         // marginBottom: "5rem",
-        boxShadow: "1px 1px 1px  #8ecae6",
+        boxShadow: "2px 2px 10px  #023047",
         borderRadius: "0.5rem",
         // paddingLeft: "5rem",
       }}
@@ -26,7 +30,7 @@ function DoctorNavBar() {
           justifyContent: "center",
           width: "100%",
           maxWidth: "100%",
-          borderBottom: "1px solid black",
+          borderBottom: "1px solid #f77f00",
         }}
       >
         <h4>Hospital Management</h4>
@@ -40,7 +44,7 @@ function DoctorNavBar() {
         }}
       >
         <button
-          className="btn  dropdown-toggle"
+          className="btn  dropdown-toggle text-white"
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -91,14 +95,23 @@ function DoctorNavBar() {
           maxWidth: "100%",
         }}
       >
-        <button className="btn" style={{ margin: "0.5rem 0" }}>
+        <button className="btn text-white" style={{ margin: "0.5rem 0" }}>
           Dashboard
         </button>
-        <button className="btn" style={{ margin: "0.5rem 0" }}>
+        <button className="btn text-white" style={{ margin: "0.5rem 0" }}>
           Appointment Schedule
         </button>
-        <button className="btn" style={{ margin: "0.5rem 0" }}>
+        <button className="btn text-white" style={{ margin: "0.5rem 0" }}>
           All Patient
+        </button>
+        <button
+          className="btn text-white"
+          style={{ margin: "0.5rem 0" }}
+          onClick={() => {
+            navigate("/taskmanagement");
+          }}
+        >
+          Task Management
         </button>
       </div>
     </div>

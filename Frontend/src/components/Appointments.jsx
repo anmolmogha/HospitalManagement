@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function Appointments() {
   const scrollContainerRef = useRef(null);
+  const navigate = useNavigate();
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -49,41 +51,53 @@ function Appointments() {
         onClick={scrollLeft}
         style={{
           position: "absolute",
-          left: 0,
+          // height: "100%",
+          left: "-3%",
           top: "50%",
           transform: "translateY(-50%)",
           zIndex: 1,
-          background: "rgba(255,255,255,0.8)",
+          background: "rgba(216,216,216,0.5)",
+          color: "#001d3d",
+          borderBottomRightRadius: "50%",
+          borderTopRightRadius: "50%",
           border: "none",
           cursor: "pointer",
           padding: "0.5rem",
         }}
       >
-        <FaLongArrowAltLeft />
+        <FaLongArrowAltLeft style={{ fontSize: "2rem" }} />
       </button>
       <button
         onClick={scrollRight}
         style={{
+          // fontWeight: "80px",
+          // height: "100%",
           position: "absolute",
-          right: 0,
+          right: "-3%",
           top: "50%",
           transform: "translateY(-50%)",
           zIndex: 1,
-          background: "rgba(255,255,255,0.8)",
+          background: "rgba(216,216,216,0.5)",
+          color: "#001d3d",
           border: "none",
+          borderBottomLeftRadius: "80%",
+          borderTopLeftRadius: "80%",
+          // borderRadius: "50%",
+          // backgroundColor: "#284b63",
           cursor: "pointer",
           padding: "0.5rem",
         }}
       >
-        <FaLongArrowAltRight />
+        {/* <FaArrowAltCircleRight style={{ fontSize: "2rem" }} /> */}
+        <FaLongArrowAltRight style={{ fontSize: "2rem" }} />
       </button>
       <div
         ref={scrollContainerRef}
         style={{
           display: "flex",
-          overflowX: "auto",
+          overflowX: "hidden",
           marginTop: "1.5rem",
-          height: "200px",
+          height: "280px",
           maxWidth: "1000px",
           scrollBehavior: "smooth", // Ensures smooth scrolling
         }}
@@ -91,11 +105,18 @@ function Appointments() {
         {cardsData.map((card, index) => (
           <div
             className="card mb-3"
+            onClick={() => {
+              navigate("/patientdashboardfordoctor");
+            }}
             style={{
+              cursor: "pointer",
+              margin: "1rem ",
               maxWidth: "540px",
-              width: "540px",
+              width: "400px",
               flex: "0 0 auto", // Prevents cards from shrinking or growing
               marginRight: "1rem",
+              boxShadow: "2px 2px 10px  #023047",
+              borderRadius: "0.5rem",
             }}
             key={index}
           >
